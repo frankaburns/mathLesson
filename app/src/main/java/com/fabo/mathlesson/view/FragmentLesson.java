@@ -156,6 +156,7 @@ public class FragmentLesson extends Fragment {
             // fargmentLessonBinding.textViewComment.setText(blank);
             fargmentLessonBinding.textViewResult.setText(result);
             problemSolution();
+            number = null;
             buttonEqualsControl = true;
         });
 
@@ -167,8 +168,9 @@ public class FragmentLesson extends Fragment {
     public void problemSolution(){
         //
         // make sure problem exists
+        int size = Math.min(pg.getNumProblems(), pg.getProblemCount());
 
-        if (problem != null) {
+        if (problem != null && number != null) {
             //
             // ask the object for the answer and compare it to the supplied answer
             // wrong:
@@ -212,11 +214,34 @@ public class FragmentLesson extends Fragment {
             //
             if (problem != null) {
 
-                int numProblems = Math.min(pg.getNumProblems(), pg.getProblemCount());
-
                 fargmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
                 fargmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
-                fargmentLessonBinding.textViewTotal.setText(String.valueOf(numProblems));
+                fargmentLessonBinding.textViewTotal.setText(String.valueOf(size));
+
+                String numerator = "" + problem.getNumerator();
+                fargmentLessonBinding.textViewNumerator.setText(numerator);
+                String denominator = functionStr + problem.getDenominator();
+                SpannableString spannableString = new SpannableString(denominator);
+
+                // Underline the entire string
+                spannableString.setSpan(new UnderlineSpan(), 0, spannableString.length(), 0);
+
+                // Or underline a specific portion (e.g., "underlined")
+                // spannableString.setSpan(new UnderlineSpan(), 12, 22, 0);
+                fargmentLessonBinding.textViewDenominator.setText(spannableString);
+            }
+        } else {
+
+            numWrong++;
+            if (problem != null) {
+                problem.setEnd();
+                problem = pg.getProblem();
+            }
+
+            if (problem != null) {
+                fargmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
+                fargmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
+                fargmentLessonBinding.textViewTotal.setText(String.valueOf(size));
 
                 String numerator = "" + problem.getNumerator();
                 fargmentLessonBinding.textViewNumerator.setText(numerator);
@@ -231,15 +256,15 @@ public class FragmentLesson extends Fragment {
                 fargmentLessonBinding.textViewDenominator.setText(spannableString);
             }
         }
+
         if (problem == null) {
 
             averageTime = pg.getAverageTime();
             // send results to result fragment
             Bundle bundle = new Bundle();
-            int numProblems = Math.min(pg.getNumProblems(), pg.getProblemCount());
             bundle.putInt("correct",correct);
             bundle.putInt("wrong",numWrong);
-            bundle.putInt("total",numProblems);
+            bundle.putInt("total",size);
             bundle.putInt("averageTime",(int)averageTime);
 
             Navigation.findNavController(this.fargmentLessonBinding.getRoot()).navigate(

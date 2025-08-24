@@ -7,7 +7,7 @@ public class BasicMath {
   public final static int DIV = 3;
   private boolean  status = true;
   private boolean printStats = false;
-  private long start;
+  private long start = 0;
   private long elapsed;
   private final int function;
   private final int numerator;
