@@ -126,7 +126,7 @@ class ProblemGenerator {
      */
     public BasicMath getProblem () {
 
-        if ((problemsSolved < numProblems) && (problemsSolved < problemSet.size())) {
+        if (problemsSolved < Math.min(numProblems,problemSet.size())) {
            return problemSet.get(problemsSolved++);
         } else {
             problemsSolved = 0;
