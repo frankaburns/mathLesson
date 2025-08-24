@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/functionView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginStart="28dp"
         android:minHeight="35dp"
         android:gravity="bottom"
@@ -28,7 +28,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutFunction"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="8dp"
         android:gravity="bottom"
@@ -42,33 +42,33 @@
 
         <Button
             android:id="@+id/functionButton0"
-            android:layout_width="83dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:text="Add"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
 
 
         <Button
             android:id="@+id/functionButton1"
-            android:layout_width="83dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:text="Sub"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
 
         <Button
             android:id="@+id/functionButton2"
-            android:layout_width="83dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:text="Mul"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
 
 
         <Button
             android:id="@+id/functionButton3"
-            android:layout_width="83dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
             android:text="Div"
@@ -139,8 +139,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutRandR"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_width="300dp"
+        android:layout_height="220dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
@@ -157,7 +157,7 @@
             android:layout_height="35dp"
             android:text="Randomize"
             android:layout_marginEnd="100dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="8dp"
             android:minHeight="35dp"
             android:textSize="24dp"
             android:textStyle="bold" />
@@ -165,10 +165,10 @@
 
         <Button
             android:id="@+id/randomButton"
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="240dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="8dp"
             android:text="Random"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
 
@@ -177,20 +177,20 @@
         <TextView
             android:id="@+id/rangeTextView"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:gravity="bottom"
             android:text="Range"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="8dp"
             android:minHeight="35dp"
             android:textSize="24dp"
             android:textStyle="bold"/>
 
         <Button
             android:id="@+id/rangeButton"
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="240dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="8dp"
             android:text="Range"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
 
@@ -215,7 +215,7 @@
         <TextView
             android:id="@+id/startTextView"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text="Start Range: "
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
@@ -228,7 +228,7 @@
         <EditText
             android:id="@+id/startEditTextNumberDecimal"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:ems="10"
             android:inputType="numberDecimal"
             tools:layout_editor_absoluteX="168dp"
@@ -254,7 +254,7 @@
         <TextView
             android:id="@+id/endTextView"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="bottom"
             android:text="End Range: "
             android:layout_marginEnd="0dp"
@@ -277,7 +277,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutNumProblems"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="bottom"
