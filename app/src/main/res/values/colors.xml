@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="bar_color">#FF90D5FF</color>
-    <color name="text_color">#FF000000</color>
-    <color name="background_color">#FFFFFFFF</color>
-    <color name="blue">#FF90D5FF</color>
-    <color name="switch_thumb">#FFFF5722</color>
-    <color name="switch_track">#FFFAAE97</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="bar_color">#90D5FF</color>
+    <color name="text_color">#000000</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="blue">#90D5FF</color>
+    <color name="switch_off">#B5AEAF</color>
+    <color name="switch_on">#B3FA97</color>
 </resources>
