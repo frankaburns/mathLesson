@@ -15,28 +15,27 @@
     <string name="your_result">Your Result</string>
     <string name="button_exit">Exit</string>
 
-    <string name="Function">Math Function</string>
+    <string name="Function">Math Function:    </string>
     <string name="Add">Add</string>
     <string name="Sub">Sub</string>
     <string name="Mul">Mul</string>
     <string name="Div">Div</string>
 
-    <string name="Level">Number of Digits</string>
-    <string name="level_0">1–10</string>
-    <string name="level_1">1–100</string>
-    <string name="level_2">1–1000</string>
+    <string name="Level"   >Number of Digits: </string>
+    <string name="level_0">10</string>
+    <string name="level_1">100</string>
+    <string name="level_2">1000</string>
 
-    <string name="Randomize">Randomize</string>
+    <string name="Randomize">Random</string>
     <string name="Range">Range</string>
 
-    <string name="Start">Start Range: </string>
-    <string name="End">End Range:   </string>
+    <string name="Start">Start:</string>
+    <string name="End">End:</string>
 
-    <string name="Number">Number of\nProblems: </string>
+    <string name="Number">Number of Problems: </string>
 
     <string name="Go">Start</string>
 
-    <string name="color_switch_off">\@color/switch_off</string>
-    <string name="color_switch_on">\@color/switch_on</string>
+    <string name="new_lesson">New Lesson</string>
 
 </resources>

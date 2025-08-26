@@ -40,7 +40,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:background="@color/bar_color"
-        android:text="New Lesson"
+        android:text="@string/new_lesson"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:cornerRadius="10dp"
