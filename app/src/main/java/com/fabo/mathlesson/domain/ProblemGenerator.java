@@ -133,6 +133,18 @@ class ProblemGenerator {
             return null;
         }
     }
+    /**
+     *
+     * @return get he next problem in the list
+     */
+    public BasicMath getProblem (int index) {
+
+        if (index < problemSet.size()) {
+            return problemSet.get(index);
+        } else {
+            return null;
+        }
+    }
 
     public long getAverageTime () {
 
