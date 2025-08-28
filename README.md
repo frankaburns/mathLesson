@@ -1,8 +1,8 @@
-# sarah-math
+# math-lesson
 
-The Sarah Math is an app to aid your child in attaining the basics of basic math. Sarah Math manages the configuration and execution of Math Lessons. It concentrates on basic addition, subtraction, multiplication and division. Tha app is intended for children learning simple math i.e. first through fourth ot fifth grades.
+Math Lesson is an app to aid your child in attaining competence in basic math. Math Lesson allow the parent/whomever to manage the configuration of the target Lessons, based upon the level of understanding. It concentrates on basic addition, subtraction, multiplication and division. For more detailed configuration definition see <documentation> below.  This app is intended for children learning simple math i.e. first through fourth or fifth grades.
 
-Below Find the High Level Design (HLD) of the Sarah Math, depicting the interactions of the various components.
+Below Find the High Level Design (HLD) of the Math Lesson, depicting the interactions of the various components.
 
 
 ```mermaid
@@ -12,10 +12,10 @@ title: Lesson Architecture
 ---
 
 architecture-beta
-    group api(cloud)[Sarah Math API]
+    group api(cloud)[Math Lesson API]
 
     service droid(server)[Android] in api
-    service sm(server)[Sarah Math] in api
+    service sm(server)[Math Lesson] in api
     service config(server)[Configuration Services] in api
     service build(server)[Generate Problems] in api
     service run(server)[Lesson Processor] in api
@@ -33,7 +33,7 @@ architecture-beta
 - [sarah-math](#sarah-math)
   * [Table of Contents](#table-of-contents)
   * [Development](#development)
-    + [Building Sarah Math](#building-sarah-math)
+    + [Building Math Lesson](#building-sarah-math)
     + [Testing](#testing-sarah-math)
   + [Configuration](#configuration)
   * [Documentation](#documentation)
@@ -44,9 +44,9 @@ architecture-beta
 
 ## Development
 
-The Sarah Math was developed in a Linux environment using the Java Language and the Android Studio <version> build environment. 
+The Math Lesson was developed in a Linux environment using the Java Language and the Android Studio <version> build environment. 
 
-### Building Sarah Math
+### Building Math Lesson
 
 #### To build and upload to your connected bench, (in docker, in service directory)
 
@@ -55,18 +55,26 @@ gradle clean
 gradle build
 ```
 
-### Testing Sarah Math
+### Testing Math Lesson
 
-Sarah Math is tested in a
+Math Lesson is tested in a
 
 ## Configuration
 
 
 ## Documentation
 
-Sarah Math documentation is maintained in this document.
+Math Lesson documentation is maintained in this document.
 
-![img_2.png](img_2.png)
+![Alt text](images/config-portrait.png "Lesson Configuration")
+
+![Alt text](images/config-landscape.png "Lesson Configuration")
+![Alt text](images/config-range-portrait.png "Lesson Configuration, range selected")
+![Alt text](images/config-range-landscape.png, "Lesson Configuration, range selected")
+![Alt text](images/lesson-portrait.png "Lesson Execution")
+![Alt text](images/lesson-landscape.png "Lesson Execution")
+![Alt text](images/result-portrait.png "Lesson Results")
+![Alt text](images/result-landscape.png "Lesson Results")
 
 ### Open Source References
 [//]: # ([Optional] Add any used open source projects, software or repositories here)
