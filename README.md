@@ -66,7 +66,7 @@ Math Lesson is tested in a
 
 Math Lesson documentation is maintained in this document.
 
-![Alt text](images/config-portrait.png "Lesson Configuration")
+![Alt text](images/config-combined.png "Lesson Configuration")
 
 ![Alt text](images/config-landscape.png "Lesson Configuration")
 ![Alt text](images/config-range-portrait.png "Lesson Configuration, range selected")
