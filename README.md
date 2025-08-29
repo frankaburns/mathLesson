@@ -47,41 +47,40 @@ architecture-beta
 ```
 
 ## Table of Contents
-- [sarah-math](#sarah-math)
+- [math-lesson](#math-lesson)
   * [Table of Contents](#table-of-contents)
   * [Development](#development)
     + [Building Math Lesson](#building-sarah-math)
     + [Testing](#testing-sarah-math)
-  + [Configuration](#configuration)
   * [Documentation](#documentation)
     + [Open Source References](#open-source-references)
     + [Architecture](#architecture)
   * [Contributing](#contributing)
-  * [Contributors](#conributors)
 
 ## Development
 
-The Math Lesson was developed in a Linux environment using the Java Language and the Android Studio <version> build environment. 
+The Math Lesson was developed in a Linux environment using the Java Language and the Android Studio <version> build environment. The code is located in GitHub at: https://github.com/frankaburns/mathLesson
 
 ### Building Math Lesson
 
-#### To build and upload to your connected bench, (in docker, in service directory)
+Download Android Studio and open the mathLesson project.  Click the build button.
+
+#### To build with gradle
 
 ```agsl
+cd <mathLesson directory>
 gradle clean
 gradle build
 ```
 
 ### Testing Math Lesson
 
-Math Lesson is tested in a
-
-## Configuration
-
+Math Lesson has Unit tests that validate the domain functionality.  Integration testing is done following the test plan located <>
 
 ## Documentation
 
 Math Lesson documentation is maintained in this document.
+
 ### Configuration View
 
 The configuration view is shown below with the add function, 1 digit (10),the random button and number of problems set to 10 are selected,  Click the Start button to create the configured problem set.
@@ -96,11 +95,15 @@ Below is an image of the above described configuration in Portrait and Landscape
 
 ![Alt text](images/Configuration-range.png "Lesson Configuration")
 
+### Lesson View
+
 The Lesson view is shown below with the add function, 1 digit (10),the Ordered button (Random deselected) and number of problems set to 10 are selected,  Additionally the Start and End ranges are set.  Click the Start button to create the configured problem set.
 
 Below is an image of the above configured lesson view in Portrait and Landscape.
 
 ![Alt text](images/Lesson-sub.png "Lesson")
+
+### Results View
 
 The Result view displays the lesson statistics including number correct, total, incorrect and the average time for each problem.
 
