@@ -83,11 +83,23 @@ Math Lesson documentation is maintained in this document.
 
 ### Configuration View
 
-The configuration view is shown below with the add function, 1 digit (10),the random button and number of problems set to 10 are selected,  Click the Start button to create the configured problem set.
+The Configuration view is straight forward, but a few thing of note:
+
+1. The Ordered Button if clicked switches to green and the test Random.
+2. If the Rang button is clicked the Start and End range edit fields appear.
+3. If the entered number of problems is larger that the configured problem set size the problem set size is used.
+
+#### Randomize Problem Set
+
+The configuration view is shown below with the add function, 1 digit (10), the random button and number of problems set to 10 are selected,  Click the Start button to create the configured problem set.
 
 Below is an image of the above described configuration in Portrait and Landscape.
 
 ![Alt text](images/Configuration-random.png "Lesson Configuration")
+
+#### Order a range in the Problem Set
+
+Note: Random button now unselected and the text is Ordered.  Also note the Start and End edit fields.
 
 The configuration view is shown below with the add function, 1 digit (10),the Ordered button (Random deselected) and number of problems set to 10 are selected,  Additionally the Start and End ranges are set.  Click the Start button to create the configured problem set.
 
