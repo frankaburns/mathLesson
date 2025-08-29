@@ -26,7 +26,9 @@
     <string name="level_1">100</string>
     <string name="level_2">1000</string>
 
-    <string name="Randomize">Random</string>
+    <string name="Randomize">Randomize</string>
+    <string name="Random">Random</string>
+    <string name="Ordered">Ordered</string>
     <string name="Range">Range</string>
 
     <string name="Start">Start:</string>

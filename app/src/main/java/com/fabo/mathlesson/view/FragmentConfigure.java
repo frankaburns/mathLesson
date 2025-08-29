@@ -109,10 +109,12 @@ public class FragmentConfigure extends Fragment {
         fragmentConfigureBinding.randomButton.setOnClickListener(v -> {
             if (randomClicked) {
                 random = 0;
+                random_button.setText(R.string.Ordered);
                 random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
                 randomClicked = false;
             } else {
                 random = 1;
+                random_button.setText(R.string.Random);
                 random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
                 randomClicked = true;
 

@@ -161,7 +161,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/switch_off"
             android:textColor="@color/black"
-            android:text="@string/Randomize"
+            android:text="@string/Ordered"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
 
         <Button
@@ -264,6 +264,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/blue"
         android:textColor="@color/black"
+        android:textSize="17sp"
         android:text="@string/Go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
