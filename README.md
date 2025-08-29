@@ -2,6 +2,23 @@
 
 Math Lesson is an app to aid your child in attaining competence in basic math. Math Lesson allow the parent/whomever to manage the configuration of the target Lessons, based upon the level of understanding. It concentrates on basic addition, subtraction, multiplication and division. For more detailed configuration definition see <documentation> below.  This app is intended for children learning simple math i.e. first through fourth or fifth grades.
 
+The application consists of a configuration screen, a problem solving screen and a results screen.  The configuration screen allows the parent to select
+
+Math Function (Addition, Subtraction, Multiplication and Division)
+Digit Level (1-10, 1-100, 1-1000)
+Random or ordered
+Range
+  Start Range
+  End Range
+Number of problems for the lesson
+
+The execution screen iterates through the configured problem set and tests the student. The Result screen displays a chart with:
+
+Correct Number of Answers
+Total Number of Problems
+Incorrect Number of Answers
+Average time spent during the lesson
+
 Below Find the High Level Design (HLD) of the Math Lesson, depicting the interactions of the various components.
 
 
@@ -65,8 +82,24 @@ Math Lesson is tested in a
 ## Documentation
 
 Math Lesson documentation is maintained in this document.
+### Configuration View
 
-![Alt text](images/config-combined.png "Lesson Configuration")
+The configuration view is shown below with the add function, 1 digit (10),the random button and number of problems set to 10 are selected,  Click the Start button to create the configured problem set.
+
+Below is an image of the above described configuration in Portrait and Landscape.
+
+![Alt text](images/Configuration-random.png "Lesson Configuration")
+
+The configuration view is shown below with the add function, 1 digit (10),the Ordered button (Random deselected) and number of problems set to 10 are selected,  Additionally the Start and End ranges are set.  Click the Start button to create the configured problem set.
+
+Below is an image of the above described configuration in Portrait and Landscape.
+
+![Alt text](images/Configuration-range.png "Lesson Configuration")
+
+
+
+![Alt text](images/Lesson-sub.png "Lesson")
+![Alt text](images/result.png "Lesson Statistics")
 
 ### Open Source References
 [//]: # ([Optional] Add any used open source projects, software or repositories here)
