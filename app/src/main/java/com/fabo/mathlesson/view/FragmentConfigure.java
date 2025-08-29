@@ -122,7 +122,7 @@ public class FragmentConfigure extends Fragment {
 
         fragmentConfigureBinding.rangeButton.setOnClickListener(v -> {
             if (rangeClicked) {
-                range = 1;
+                range = 0;
                 range_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
 
                 fragmentConfigureBinding.startEditTextNumberDecimal.setVisibility(INVISIBLE);
@@ -132,7 +132,7 @@ public class FragmentConfigure extends Fragment {
                 fragmentConfigureBinding.endTextView.setVisibility(INVISIBLE);
                 rangeClicked = false;
             } else {
-                range = 0;
+                range = 1;
                 range_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
 
                 fragmentConfigureBinding.startEditTextNumberDecimal.setVisibility(VISIBLE);
@@ -159,19 +159,6 @@ public class FragmentConfigure extends Fragment {
             bundle.putInt("end",end);
             bundle.putInt("num",numProblems);
 
-            // reset parameters.
-            //
-            function = 0;
-            level = 0;
-            random = 0;
-            range = 0;
-            start = 0;
-            end = 10;
-            numProblems = 10;
-
-            fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-            fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-            fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
             Navigation.findNavController(v).navigate(
                     R.id.action_fragmentConfigure_to_fragmentLesson,
@@ -179,6 +166,20 @@ public class FragmentConfigure extends Fragment {
                     new NavOptions.Builder().setPopUpTo(R.id.fragmentConfigure,false).build()
             );
         });
+
+        // reset parameters.
+        //
+        function = 0;
+        level = 0;
+        random = 0;
+        range = 0;
+        start = 0;
+        end = 10;
+        numProblems = 10;
+
+        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
+        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
+        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         return fragmentConfigureBinding.getRoot();
 

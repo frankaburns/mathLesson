@@ -1,7 +1,9 @@
-package com.fabo.sarahMath;
+package com.fabo.mathlesson;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import com.fabo.mathlesson.domain.BasicMath;
 
 public class BasicMathUnitTest {
 

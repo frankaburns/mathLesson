@@ -19,7 +19,7 @@ public class BasicMath {
    * @param top - numerator value
    * @param bottom - denominator value
    */
-  BasicMath(int func, int top, int bottom) {
+  public BasicMath(int func, int top, int bottom) {
     function    = func;
     numerator   = top;
     denominator = bottom;
