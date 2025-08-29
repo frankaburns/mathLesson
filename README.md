@@ -132,26 +132,95 @@ OPTIONAL: Add any used open source projects, software or repositories here
 
 #### BasicMath Domain Class
 
-    public BasicMath(int func, int top, int bottom)
-    public int doTheMath ()
-    public void setStatus (boolean s)
-    public boolean getStatus ()
-    public long getElapsed ()
-    public int getNumerator ()
-    public int getDenominator ()
+This class defines a math problem the constructor sets the function(Add, Sub, Mul, Div).  The constructor takes a Numerator and a Denominator.  The class also times from the last getNumerator to the answer entered.
+
+
+    ** public BasicMath(int func, int top, int bottom) **
+##### Description
+    Create class set function and the Numerator and Denominator.
+    ** Inputs: **
+        int func - math function (A< S< M<D)
+        int top - Numerator
+        int Bottom - Denominator
+
+    ** Outputs **
+        BasicMath - a new BasicMath object configured to the created problem
+
+      ** public void setStatus (boolean s) **
+##### Description
+    Set the problem as solved correctly or not..
+    ** Inputs: **
+        boolean s - Pass/Fail (true/false)
+
+    ** Outputs **
+        void
+
+    ** public boolean getStatus () **
+##### Description
+    Get the problem status right/wrong (true/false)
+    ** Inputs: **
+        void
+
+    ** Outputs **
+        void
+
+    ** public long getElapsed () **
+##### Description
+    Get the problem execution time (milliseconds)
+    ** Inputs: **
+        void
+
+    ** Outputs **
+        void
+
+    ** public int getNumerator () **
+##### Description
+    Get the problem Numerator
+    ** Inputs: **
+        void
+
+    ** Outputs **
+        void
+
+    ** public int getDenominator () **
+##### Description
+    Get the problem Denominator
+    ** Inputs: **
+        void
+
+    ** Outputs **
+        void
+
+##### Description
+
+      ** public int doTheMath () **
+##### Description
+    Solve the problem and return the correct answer.
+    ** Inputs: **
+        void
+
+    ** Outputs **
+        int result - the answer
+
 
 #### ProblemGenerator Domain Class
 
     public ProblemGenerator(int size)
+
+
     public void setNumProblems ( int n)
     public void setRandomProblem ( boolean p)
     public void setLessonFunction (int f)
     public void setStartRow (int f) startRow = f; }
     public void setEndRow (int f) endRow = f; }
     public void setLessonLevel (int l)
+
+
     public int getNumProblems ()
     public int getProblemCount ()
     public int getRowCount ()
+
+
     public BasicMath getProblem ()
     public BasicMath getProblem (int index)
     public long getAverageTime ()
@@ -176,6 +245,7 @@ OPTIONAL: Add any used open source projects, software or repositories here
 
     fargmentLessonBinding.btnDel.setOnClickListener(v ->
     fargmentLessonBinding.btnEquals.setOnClickListener(v ->
+
     public void problemSolution()
     public void onNumberClicked(String clickedNumber)
     public void onButtonACClicked()
