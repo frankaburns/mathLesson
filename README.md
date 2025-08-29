@@ -134,71 +134,80 @@ OPTIONAL: Add any used open source projects, software or repositories here
 
 This class defines a math problem the constructor sets the function(Add, Sub, Mul, Div).  The constructor takes a Numerator and a Denominator.  The class also times from the last getNumerator to the answer entered.
 
-
+##### Methods
+...
     ** public BasicMath(int func, int top, int bottom) **
-##### Description
+...
+
+###### Description
+...
     Create class set function and the Numerator and Denominator.
     ** Inputs: **
         int func - math function (A< S< M<D)
         int top - Numerator
         int Bottom - Denominator
-
     ** Outputs **
         BasicMath - a new BasicMath object configured to the created problem
-
+...
       ** public void setStatus (boolean s) **
-##### Description
+###### Description
+...
     Set the problem as solved correctly or not..
     ** Inputs: **
         boolean s - Pass/Fail (true/false)
-
     ** Outputs **
         void
-
+...
     ** public boolean getStatus () **
-##### Description
+...
+###### Description
+...
     Get the problem status right/wrong (true/false)
     ** Inputs: **
         void
-
     ** Outputs **
         void
-
+...
     ** public long getElapsed () **
-##### Description
-    Get the problem execution time (milliseconds)
+...
+###### Description
+...
+Get the problem execution time (milliseconds)
     ** Inputs: **
         void
-
     ** Outputs **
         void
+...
 
     ** public int getNumerator () **
-##### Description
+...
+###### Description
+...
     Get the problem Numerator
     ** Inputs: **
         void
-
     ** Outputs **
         void
+...
 
     ** public int getDenominator () **
-##### Description
+...
+###### Description
+...
     Get the problem Denominator
     ** Inputs: **
         void
-
     ** Outputs **
         void
-
-##### Description
+...
 
       ** public int doTheMath () **
-##### Description
+...
+###### Description
+...
     Solve the problem and return the correct answer.
     ** Inputs: **
         void
-
     ** Outputs **
         int result - the answer
 
