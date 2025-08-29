@@ -68,14 +68,6 @@ Math Lesson documentation is maintained in this document.
 
 ![Alt text](images/config-combined.png "Lesson Configuration")
 
-![Alt text](images/config-landscape.png "Lesson Configuration")
-![Alt text](images/config-range-portrait.png "Lesson Configuration, range selected")
-![Alt text](images/config-range-landscape.png, "Lesson Configuration, range selected")
-![Alt text](images/lesson-portrait.png "Lesson Execution")
-![Alt text](images/lesson-landscape.png "Lesson Execution")
-![Alt text](images/result-portrait.png "Lesson Results")
-![Alt text](images/result-landscape.png "Lesson Results")
-
 ### Open Source References
 [//]: # ([Optional] Add any used open source projects, software or repositories here)
 
