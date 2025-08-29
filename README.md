@@ -139,9 +139,10 @@ OPTIONAL: Add any used open source projects, software or repositories here
 1. Push to the branch (`git push origin my-new-feature`)
 1. Create a new Merge Request
 
-## Contributors[Francis Burns]: - Developer, Maintainer
+## Contributors
 
-<br><br>
-- [Frank Burns]:              - README Content
+- [Francis Burns]:            - Developer, Maintainer
+
+- [Francis Burns]:            - README Content
 
  <a href="#top">Back to Top</a>
