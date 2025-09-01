@@ -5,8 +5,13 @@ import static org.junit.Assert.*;
 
 import com.fabo.mathlesson.domain.BasicMath;
 
+/**
+ * Test the basic math functions
+ */
 public class BasicMathUnitTest {
-
+    /**
+     * Test the add function
+     */
     @Test
     public void testAdd() {
         BasicMath bm = new BasicMath(BasicMath.ADD, 10, 10);
@@ -15,6 +20,9 @@ public class BasicMathUnitTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test the subtract function
+     */
     @Test
     public void testSub() {
         BasicMath bm = new BasicMath(BasicMath.SUB, 13, 6);
@@ -23,6 +31,9 @@ public class BasicMathUnitTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test the multiply function
+     */
     @Test
     public void testMul() {
         BasicMath bm = new BasicMath(BasicMath.MUL, 10, 2);
@@ -31,6 +42,9 @@ public class BasicMathUnitTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test the divide function
+     */
     @Test
     public void testDiv() {
         BasicMath bm = new BasicMath(BasicMath.DIV, 10, 5);

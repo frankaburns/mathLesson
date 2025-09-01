@@ -43,6 +43,22 @@ public class FragmentConfigure extends Fragment {
     FragmentConfigureBinding fragmentConfigureBinding;
 
 
+    /**
+     * This fragment view is defining the Configuration View for the Math Lesson app.
+     * The onCreateView method defines the actions for each button or textedit on the
+     * configuration view.  This basically keeping track of settings and/or adjusting
+     * color/text based upon the last click.<br>
+     * The Start button invokes the lesson fragment with the either default or modified
+     * problem set settings.<br>
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,<br>
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.<br>
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.<br>
+     * @return - the newly created View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,7 +76,7 @@ public class FragmentConfigure extends Fragment {
         fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         String color_switch_off = "#B5AEAF";
-        String color_switch_on = "#B3FA97";
+        String color_switch_on  = "#B3FA97";
 
         fragmentConfigureBinding.functionButton0.setOnClickListener(v -> {
 

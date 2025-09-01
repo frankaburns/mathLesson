@@ -3,44 +3,54 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The ProblemGenerator class builds a List of BasicMath objects.  The generated list is defined by
+ * several variables.<br>>
+ * Note: Subtraction and Division are filtered to maintain whole digit solutions, so the problem set
+ *       leve0 0 (10's) Addition Multiplication size 100, Subtraction size 56 and Division size 27.<br>>
+ * The objects can be Ordered or randomized.  The size of the lesson is managed by the getProblem()
+ * method and controlled by the lesser of the problem set size or configured number of problems.
+ */
 public
 class ProblemGenerator {
 
-    public  static int     lessonLevel;
-    public  static int     startRow;
-    public  static int     startCol;
-    public  static int     endRow;
-    public  static int     endCol;
-    public  static int     numWrong;
-    public  static int     problemsSolved;
-    public  static int     numProblems;
-    public  static int     lessonFunction; // 0-ADD, 1-SUB, 2-MUL, 3-DIV
-    public  static boolean randomProblem;
-    public  static boolean showRandom = false;
+    /*
+        Lesson generation control variables
+     */
+    private  static int     lessonLevel;
+    private  static int     startRow;
+    private  static int     startCol;
+    private  static int     endRow;
+    private  static int     endCol;
+    private  static int     problemsSolved;
+    private  static int     numProblems;
+    private  static int     lessonFunction; // 0-ADD, 1-SUB, 2-MUL, 3-DIV
+    private  static boolean randomProblem;
 
     //
-    // A list of BasicMath objects, the main lesson driver.
+    // A list of BasicMath objects, the main lesson data.
     List<BasicMath> problemSet = new ArrayList<>();
 
     /**
-     * 
-     * @param size - an arbitrary size to begin.
+     * Create a default problem generator with:
+     *  - function - ADD
+     *  - level - 0 (one digit)
+     *  - random - false/ordered
+     *  - numProblems - 10
      */
-    public ProblemGenerator(int size) {
-        endRow         = size;
-        endCol         = size;
+    public ProblemGenerator() {
+        endRow         = 10;
+        endCol         = 10;
         startRow       = 0;
         startCol       = 0;
-        numWrong       = 0;
-        lessonLevel    = size/10;
+        lessonLevel    = 0;
         numProblems    = 10;
         randomProblem  = false;
         problemsSolved = 0;
     }
 
-
     /**
-     * 
+     * Set the number of problems for the lesson.
      * @param n - number of problems for this run
      */
     public void setNumProblems ( int n) {
@@ -48,7 +58,7 @@ class ProblemGenerator {
     }
 
     /**
-     * 
+     * Set the ordered/random for problems for the lesson.
      * @param p - randomize the problem objects
      */
     public void setRandomProblem ( boolean p) {
@@ -56,7 +66,7 @@ class ProblemGenerator {
     }
 
     /**
-     *
+     * Set the function for the problems in the lesson.
      * @param f - lesson function add, sub, mul, div
      */
     public void setLessonFunction (int f) {
@@ -64,19 +74,19 @@ class ProblemGenerator {
     }
 
     /**
-     *
+     * Set the start range of problems for the lesson.
      * @param f - the start # of the beginning of a range
      */
     public void setStartRow (int f) { startRow = f; }
 
     /**
-     *
+     * Set the end range of problems for the lesson.
      * @param f - the end # of the range
      */
     public void setEndRow (int f) { endRow = f; }
 
     /**
-     *
+     * Set the bounds for the problem set based upon digit level
      * @param l - lesson level 0-3
      */
     public void setLessonLevel (int l) {
@@ -97,7 +107,7 @@ class ProblemGenerator {
     }
 
     /**
-     * 
+     * Get the number of problems for the lesson
      * @return number of problems selected
      */
     public int getNumProblems () {
@@ -105,7 +115,8 @@ class ProblemGenerator {
     }
 
     /**
-     * 
+     *
+     * Get the  problems set size
      * @return the problem set size based on level and function
      */
     public int getProblemCount () {
@@ -113,7 +124,7 @@ class ProblemGenerator {
     }
 
     /**
-     *
+     * Get the row count i.e. range
      * @return - row size based on selected lesson level
      */
     public int getRowCount () {
@@ -121,7 +132,7 @@ class ProblemGenerator {
     }
 
     /**
-     * 
+     * Get the next BasicMath object i.e. problem
      * @return get he next problem in the list
      */
     public BasicMath getProblem () {
@@ -133,9 +144,11 @@ class ProblemGenerator {
             return null;
         }
     }
+
     /**
-     *
-     * @return get he next problem in the list
+     * Get a problem (BasicMath object) by index
+     * @param index - the index in the ProblemSet List
+     * @return - the BasicMath object referenced by index.
      */
     public BasicMath getProblem (int index) {
 
@@ -146,6 +159,10 @@ class ProblemGenerator {
         }
     }
 
+    /**
+     * Loop over the lesson and average the individual problem times
+     * @return long average time
+     */
     public long getAverageTime () {
 
         long totalTime = 0;
@@ -180,36 +197,35 @@ class ProblemGenerator {
           BasicMath tmp = problemSet.get(newPosition);
           problemSet.set(newPosition, problemSet.get(prob));
           problemSet.set(prob, tmp);
-          if (showRandom) {
-              System.out.println("swapping " + prob + " with " + newPosition);
-          }
-       }
+        }
     }
 
     /**
      * Generate the requested problem set
+     *    build full problem set (100, 10,000, 1,000,000)
+     *    from 1 to size representing digits (0-10, 1-100, 2-1000)
+     *    build a problem from each main loop index and inner loop index
+     *    0 = 100, 1 = 10,000, 2 = 1,000,000
+     * <p>
+     *    if asked to randomize, randomProblem == true
+     *    Subtract, special case, filter out any with
+     *    with the numerator greater than the denominator
+     * <p>
+     *    divide, special case, filter out any with
+     *    with the numerator greater than the denominator
+     *    and is divisible evenly by the denominator.
      */
     public void buildProblemSet () {
-        // build full problem set (100, 10,000, 1,000,000)
-        // from 1 to size representing digits (0-10, 1-100, 2-1000)
-        // build a problem from each main loop index and inner loop index
-        // 0 = 100, 1 = 10,000, 2 = 1,000,000
-        //
         for( int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++ ) {
             for( int j = startCol, jPlusOne = startCol+1; j < endCol; j++, jPlusOne++ ){
                problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
             }
         }
 
-        // if asked to randomize, randomProblem == true
-        //
         if (randomProblem) {
             shuffleArray ();
         }
 
-        // Subtract, special case, filter out any with
-        // with the numerator greater than the denominator
-        //
         if (lessonFunction == BasicMath.SUB) {
             for (int i=0; i<problemSet.size(); ) {
                 if (problemSet.get(i).getNumerator() < problemSet.get(i).getDenominator()) {
@@ -218,10 +234,6 @@ class ProblemGenerator {
             }
         }
 
-        // divide, special case, filter out any with
-        // with the numerator greater than the denominator
-        // and is divisible evenly by the denominator.
-        //
         if (lessonFunction == BasicMath.DIV) {
             for (int i=0; i<problemSet.size(); ) {
                 if ( (problemSet.get(i).getNumerator() < problemSet.get(i).getDenominator()) ||

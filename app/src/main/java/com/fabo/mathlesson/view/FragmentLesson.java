@@ -1,10 +1,8 @@
 package com.fabo.mathlesson.view;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
@@ -12,7 +10,6 @@ import androidx.navigation.Navigation;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,36 +24,51 @@ import com.fabo.mathlesson.domain.ProblemGenerator;
  */
 public class FragmentLesson extends Fragment {
 
+    // Problem set input variables sent from the configuration screen
     int function = 0;
     int level = 0;
     int random = 0;
     int range = 0;
     int numProblems = 0;
+
+    // user tracking variables
     int wrong = 0;
     int numWrong = 0;
     int correct = 0;
-    String blank = " ";
     String functionStr;
     String number = null;
     String result = "";
-   boolean buttonEqualsControl = false;
+    boolean buttonEqualsControl = false;
     long end;
     long start;
     long averageTime;
+
+    // Working variables
     BasicMath problem = null;
     private ProblemGenerator pg = null;
 
-    private @NonNull FragmentLessonBinding fargmentLessonBinding;
-    SharedPreferences sharedPreferences;
+    private FragmentLessonBinding fragmentLessonBinding;
 
+    /**
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,<br>
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.<br>
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.<br>
+     *
+     * @return - the newly created View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        fargmentLessonBinding = FragmentLessonBinding.inflate(inflater,container,false);
+        fragmentLessonBinding = FragmentLessonBinding.inflate(inflater,container,false);
 
         if (pg == null) {
-            pg = new ProblemGenerator(20);
+            pg = new ProblemGenerator();
         } else {
             pg.clearProblemSet();
         }
@@ -118,7 +130,7 @@ public class FragmentLesson extends Fragment {
         problem = pg.getProblem();
 
         String numerator = "" + problem.getNumerator();
-        fargmentLessonBinding.textViewNumerator.setText(numerator);
+        fragmentLessonBinding.textViewNumerator.setText(numerator);
         String denominator = functionStr + problem.getDenominator();
         SpannableString spannableString = new SpannableString(denominator);
 
@@ -127,44 +139,46 @@ public class FragmentLesson extends Fragment {
 
         // Or underline a specific portion (e.g., "underlined")
         // spannableString.setSpan(new UnderlineSpan(), 12, 22, 0);
-        fargmentLessonBinding.textViewDenominator.setText(spannableString);
+        fragmentLessonBinding.textViewDenominator.setText(spannableString);
 
-        fargmentLessonBinding.btn0.setOnClickListener(v -> onNumberClicked("0"));
-        fargmentLessonBinding.btn1.setOnClickListener(v -> onNumberClicked("1"));
-        fargmentLessonBinding.btn2.setOnClickListener(v -> onNumberClicked("2"));
-        fargmentLessonBinding.btn3.setOnClickListener(v -> onNumberClicked("3"));
-        fargmentLessonBinding.btn4.setOnClickListener(v -> onNumberClicked("4"));
-        fargmentLessonBinding.btn5.setOnClickListener(v -> onNumberClicked("5"));
-        fargmentLessonBinding.btn6.setOnClickListener(v -> onNumberClicked("6"));
-        fargmentLessonBinding.btn7.setOnClickListener(v -> onNumberClicked("7"));
-        fargmentLessonBinding.btn8.setOnClickListener(v -> onNumberClicked("8"));
-        fargmentLessonBinding.btn9.setOnClickListener(v -> onNumberClicked("9"));
+        fragmentLessonBinding.btn0.setOnClickListener(v -> onNumberClicked("0"));
+        fragmentLessonBinding.btn1.setOnClickListener(v -> onNumberClicked("1"));
+        fragmentLessonBinding.btn2.setOnClickListener(v -> onNumberClicked("2"));
+        fragmentLessonBinding.btn3.setOnClickListener(v -> onNumberClicked("3"));
+        fragmentLessonBinding.btn4.setOnClickListener(v -> onNumberClicked("4"));
+        fragmentLessonBinding.btn5.setOnClickListener(v -> onNumberClicked("5"));
+        fragmentLessonBinding.btn6.setOnClickListener(v -> onNumberClicked("6"));
+        fragmentLessonBinding.btn7.setOnClickListener(v -> onNumberClicked("7"));
+        fragmentLessonBinding.btn8.setOnClickListener(v -> onNumberClicked("8"));
+        fragmentLessonBinding.btn9.setOnClickListener(v -> onNumberClicked("9"));
 
-        fargmentLessonBinding.btnDel.setOnClickListener(v -> {
+        fragmentLessonBinding.btnDel.setOnClickListener(v -> {
 
             if (number == null || number.length() == 1) {
                 onButtonACClicked();
             } else {
                 number = number.substring(0, number.length() - 1);
-                fargmentLessonBinding.textViewResult.setText(number);
+                fragmentLessonBinding.textViewResult.setText(number);
             }
 
         });
 
-        fargmentLessonBinding.btnEquals.setOnClickListener(v -> {
+        fragmentLessonBinding.btnEquals.setOnClickListener(v -> {
 
-            // fargmentLessonBinding.textViewComment.setText(blank);
-            fargmentLessonBinding.textViewResult.setText(result);
+            // fragmentLessonBinding.textViewComment.setText(blank);
+            fragmentLessonBinding.textViewResult.setText(result);
             problemSolution();
             number = null;
             buttonEqualsControl = true;
         });
 
         // Inflate the layout for this fragment
-        return fargmentLessonBinding.getRoot();
+        return fragmentLessonBinding.getRoot();
     }
 
-
+    /**
+     * Verify the input answer from the student.<br>Update status variables.
+     */
     public void problemSolution(){
         //
         // make sure problem exists
@@ -185,7 +199,7 @@ public class FragmentLesson extends Fragment {
                     } else {
                         msg = "Please try again.";
                     }
-                    fargmentLessonBinding.textViewResult.setText(msg);
+                    fragmentLessonBinding.textViewResult.setText(msg);
                     //
                     // hit max wrong, note and get next problem
                 } else {
@@ -214,12 +228,12 @@ public class FragmentLesson extends Fragment {
             //
             if (problem != null) {
 
-                fargmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
-                fargmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
-                fargmentLessonBinding.textViewTotal.setText(String.valueOf(size));
+                fragmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
+                fragmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
+                fragmentLessonBinding.textViewTotal.setText(String.valueOf(size));
 
                 String numerator = "" + problem.getNumerator();
-                fargmentLessonBinding.textViewNumerator.setText(numerator);
+                fragmentLessonBinding.textViewNumerator.setText(numerator);
                 String denominator = functionStr + problem.getDenominator();
                 SpannableString spannableString = new SpannableString(denominator);
 
@@ -228,7 +242,7 @@ public class FragmentLesson extends Fragment {
 
                 // Or underline a specific portion (e.g., "underlined")
                 // spannableString.setSpan(new UnderlineSpan(), 12, 22, 0);
-                fargmentLessonBinding.textViewDenominator.setText(spannableString);
+                fragmentLessonBinding.textViewDenominator.setText(spannableString);
             }
         } else {
 
@@ -239,12 +253,12 @@ public class FragmentLesson extends Fragment {
             }
 
             if (problem != null) {
-                fargmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
-                fargmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
-                fargmentLessonBinding.textViewTotal.setText(String.valueOf(size));
+                fragmentLessonBinding.textViewCorrect.setText(String.valueOf(correct));
+                fragmentLessonBinding.textViewWrong.setText(String.valueOf(numWrong));
+                fragmentLessonBinding.textViewTotal.setText(String.valueOf(size));
 
                 String numerator = "" + problem.getNumerator();
-                fargmentLessonBinding.textViewNumerator.setText(numerator);
+                fragmentLessonBinding.textViewNumerator.setText(numerator);
                 String denominator = functionStr + problem.getDenominator();
                 SpannableString spannableString = new SpannableString(denominator);
 
@@ -253,7 +267,7 @@ public class FragmentLesson extends Fragment {
 
                 // Or underline a specific portion (e.g., "underlined")
                 // spannableString.setSpan(new UnderlineSpan(), 12, 22, 0);
-                fargmentLessonBinding.textViewDenominator.setText(spannableString);
+                fragmentLessonBinding.textViewDenominator.setText(spannableString);
             }
         }
 
@@ -267,7 +281,7 @@ public class FragmentLesson extends Fragment {
             bundle.putInt("total",size);
             bundle.putInt("averageTime",(int)averageTime);
 
-            Navigation.findNavController(this.fargmentLessonBinding.getRoot()).navigate(
+            Navigation.findNavController(this.fragmentLessonBinding.getRoot()).navigate(
                     R.id.action_fragmentLesson_to_fragmentResult,
                     bundle,
                     new NavOptions.Builder().setPopUpTo(R.id.fragmentConfigure,false).build()
@@ -286,7 +300,7 @@ public class FragmentLesson extends Fragment {
         }else {
             number += clickedNumber;
         }
-        fargmentLessonBinding.textViewResult.setText(number);
+        fragmentLessonBinding.textViewResult.setText(number);
         buttonEqualsControl = false;
     }
 
@@ -296,7 +310,7 @@ public class FragmentLesson extends Fragment {
     public void onButtonACClicked(){
 
         number = null;
-        fargmentLessonBinding.textViewResult.setText("0");
+        fragmentLessonBinding.textViewResult.setText("0");
         buttonEqualsControl = false;
         result = "";
 
