@@ -46,6 +46,7 @@ architecture-beta
     run:T <--> B:droid
     droid:B <--> T:run
     sm:B <--> T:res
+```
 
 ## Table of Contents
 - [math-lesson](#math-lesson)
