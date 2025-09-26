@@ -36,7 +36,8 @@ architecture-beta
     service config(server)[Configuration Services] in api
     service build(server)[Generate Problems] in api
     service run(server)[Lesson Processor] in api
-
+    service res(server)[Results Processor] in api
+    
     sm:T <--> B:config
     config:R <--> L:droid
     droid:L <--> R:config
@@ -44,7 +45,7 @@ architecture-beta
     sm:R <--> L:run
     run:T <--> B:droid
     droid:B <--> T:run
-```
+    sm:B <--> T:res
 
 ## Table of Contents
 - [math-lesson](#math-lesson)
@@ -79,7 +80,7 @@ Math Lesson has Unit tests that validate the domain functionality.  Integration 
 
 ## Documentation
 
-Math Lesson documentation is maintained in this document.
+Math Lesson documentation is maintained in this document and can be generated from Android Studio using the generate javadoc tool.
 
 ### Configuration View
 
@@ -126,9 +127,11 @@ Below is an image of the above described configuration in Portrait and Landscape
 ### Open Source References
 [//]: # ([Optional] Add any used open source projects, software or repositories here)
 
-OPTIONAL: Add any used open source projects, software or repositories here
+1. The Charting software employed, use MPAndroid Chart, on the Results View   - com.github.PhilJay:MPAndroidChart
 
 ### Architecture
+
+
 
 ## Contributing
 
