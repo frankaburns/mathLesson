@@ -2,52 +2,6 @@
 
 Math Lesson is an app to aid your child in attaining competence in basic math. Math Lesson allow the parent/whomever to manage the configuration of the target Lessons, based upon the level of understanding. It concentrates on basic addition, subtraction, multiplication and division. For more detailed configuration definition see <documentation> below.  This app is intended for children learning simple math i.e. first through fourth or fifth grades.
 
-The application consists of a configuration screen, a problem solving screen and a results screen.  The configuration screen allows the parent to select
-
-1. Math Function (Addition, Subtraction, Multiplication and Division)
-1. Digit Level (1-10, 1-100, 1-1000)
-1. Random or ordered
-1. Range
-   1. Start Range
-   1. End Range
-1. Number of problems for the lesson
-
-The execution screen iterates through the configured problem set and tests the student. The Result screen displays a chart with:
-
-1. Correct Number of Answers
-1. Total Number of Problems
-1. Incorrect Number of Answers
-1. Average time spent during the lesson
-
-Below Find the High Level Design (HLD) of the Math Lesson, depicting the interactions of the various components.
-
-
-```mermaid
-
----
-title: Lesson Architecture
----
-
-architecture-beta
-    group api(cloud)[Math Lesson API]
-
-    service droid(server)[Android] in api
-    service sm(server)[Math Lesson] in api
-    service config(server)[Configuration Services] in api
-    service build(server)[Generate Problems] in api
-    service run(server)[Lesson Processor] in api
-    service res(server)[Results Processor] in api
-    
-    sm:T <--> B:config
-    config:R <--> L:droid
-    droid:L <--> R:config
-    sm:L <--> R:build
-    sm:R <--> L:run
-    run:T <--> B:droid
-    droid:B <--> T:run
-    sm:B <--> T:res
-```
-
 ## Table of Contents
 - [math-lesson](#math-lesson)
   * [Table of Contents](#table-of-contents)
@@ -132,6 +86,51 @@ Below is an image of the above described configuration in Portrait and Landscape
 
 ### Architecture
 
+The application consists of a configuration screen, a problem solving screen and a results screen.  The configuration screen allows the parent to select
+
+1. Math Function (Addition, Subtraction, Multiplication and Division)
+1. Digit Level (1-10, 1-100, 1-1000)
+1. Random or ordered
+1. Range
+  1. Start Range
+  1. End Range
+1. Number of problems for the lesson
+
+The execution screen iterates through the configured problem set and tests the student. The Result screen displays a chart with:
+
+1. Correct Number of Answers
+1. Total Number of Problems
+1. Incorrect Number of Answers
+1. Average time spent during the lesson
+
+Below Find the High Level Design (HLD) of the Math Lesson, depicting the interactions of the various components.
+
+
+```mermaid
+
+---
+title: Lesson Architecture
+---
+
+architecture-beta
+    group api(cloud)[Math Lesson API]
+
+    service droid(server)[Android] in api
+    service sm(server)[Math Lesson] in api
+    service config(server)[Configuration Services] in api
+    service build(server)[Generate Problems] in api
+    service run(server)[Lesson Processor] in api
+    service res(server)[Results Processor] in api
+    
+    sm:T <--> B:config
+    config:R <--> L:droid
+    droid:L <--> R:config
+    sm:L <--> R:build
+    sm:R <--> L:run
+    run:T <--> B:droid
+    droid:B <--> T:run
+    sm:B <--> T:res
+```
 
 
 ## Contributing
