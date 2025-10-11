@@ -36,6 +36,7 @@ Math Lesson has Unit tests that validate the domain functionality.  Integration 
 ## Documentation
 
 Math Lesson documentation is maintained in this document and can be generated from Android Studio using the generate javadoc tool.
+The javadoc files are located in the app/doc/javadoc directory.
 
 ### Configuration View
 

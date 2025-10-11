@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.fabo.mathlesson"},{"l":"com.fabo.mathlesson.domain"},{"l":"com.fabo.mathlesson.view"}];updateSearchResults();
