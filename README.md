@@ -6,8 +6,8 @@ Math Lesson is an app to aid your child in attaining competence in basic math. M
 - [math-lesson](#math-lesson)
   * [Table of Contents](#table-of-contents)
   * [Development](#development)
-    + [Building Math Lesson](#building-sarah-math)
-    + [Testing](#testing-sarah-math)
+    + [Building Math Lesson](#building-math-lesson)
+    + [Testing](#testing-math-lesson)
   * [Documentation](#documentation)
     + [Open Source References](#open-source-references)
     + [Architecture](#architecture)
@@ -36,7 +36,7 @@ Math Lesson has Unit tests that validate the domain functionality.  Integration 
 ## Documentation
 
 Math Lesson documentation is maintained in this document and can be generated from Android Studio using the generate javadoc tool.
-The javadoc files are [here](./app/doc/javadoc/index.html)
+The javadoc files are [here](///./app/doc/javadoc/index.html)
 
 ### Configuration View
 
@@ -90,19 +90,19 @@ Below is an image of the above described configuration in Portrait and Landscape
 The application consists of a configuration screen, a problem solving screen and a results screen.  The configuration screen allows the parent to select
 
 1. Math Function (Addition, Subtraction, Multiplication and Division)
-1. Digit Level (1-10, 1-100, 1-1000)
-1. Random or ordered
-1. Range
-  1. Start Range
-  1. End Range
-1. Number of problems for the lesson
+2. Digit Level (1-10, 1-100, 1-1000)
+3. Random or ordered
+4. Range 
+   1. Start Range
+   2. End Range
+5. Number of problems for the lesson
 
 The execution screen iterates through the configured problem set and tests the student. The Result screen displays a chart with:
 
 1. Correct Number of Answers
-1. Total Number of Problems
-1. Incorrect Number of Answers
-1. Average time spent during the lesson
+2. Total Number of Problems
+3. Incorrect Number of Answers
+4. Average time spent during the lesson
 
 Below Find the High Level Design (HLD) of the Math Lesson, depicting the interactions of the various components.
 
@@ -136,11 +136,11 @@ architecture-beta
 
 ## Contributing
 
-1. `Clone` repository to your machine
-1. Create your feature branch (`git checkout -b my-new-feature`)
-1. Commit your changes (`git commit -am 'Add some feature'`)
-1. Push to the branch (`git push origin my-new-feature`)
-1. Create a new Merge Request
+1. `Clone` repository to your machine 
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Merge Request
 
 ## Contributors
 
