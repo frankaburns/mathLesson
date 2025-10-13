@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.navigationSafeArgs)
 }
 
+
 android {
     namespace = "com.fabo.mathlesson"
     compileSdk = 34
@@ -42,6 +43,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(files("/home/frank/Android/Sdk/platforms/android-36/android.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
