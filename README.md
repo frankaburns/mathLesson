@@ -47,16 +47,14 @@ Right click on <All Modiles> and select New Module and the screen below will pop
 
 ![images/img_1.png](images/img_1.png)
 
-Enter the desired output directory in the field and click OK.
-Then select Tools>Generate Javadoc...
+Enter the path located above of your local 'android.jar', including the '.jar' file, in the field and click OK.
+Then select Tools>Generate Javadoc...>
 
 ![images/img_2.png](images/img_2.png)
 
-Select generate.
+Add the output directory and then Select generate.
 
 ![images/img_3.png](images/img_3.png)
-
-![img.png](images/img_3.png)
 
 ### Configuration View
 
