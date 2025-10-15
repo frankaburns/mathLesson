@@ -56,6 +56,8 @@ Select generate.
 
 ![images/img_3.png](images/img_3.png)
 
+![img.png](images/img_3.png)
+
 ### Configuration View
 
 The Configuration view is straight forward, but a few thing of note:
