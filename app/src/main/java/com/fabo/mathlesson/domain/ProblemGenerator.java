@@ -216,9 +216,29 @@ class ProblemGenerator {
      *    and is divisible evenly by the denominator.
      */
     public void buildProblemSet () {
-        for( int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++ ) {
-            for( int j = startCol, jPlusOne = startCol+1; j < endCol; j++, jPlusOne++ ){
-               problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+        if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
+            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
+                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
+                    problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                }
+            }
+
+
+        } else if (lessonFunction == BasicMath.SUB) {
+            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
+                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
+                   if (iPlusOne > jPlusOne) {
+                       problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                   }
+                }
+            }
+        } else if (lessonFunction == BasicMath.DIV) {
+            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
+                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
+                    if ( (iPlusOne > jPlusOne) && (iPlusOne%jPlusOne == 0) ) {
+                        problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                    }
+                }
             }
         }
 
@@ -226,22 +246,6 @@ class ProblemGenerator {
             shuffleArray ();
         }
 
-        if (lessonFunction == BasicMath.SUB) {
-            for (int i=0; i<problemSet.size(); ) {
-                if (problemSet.get(i).getNumerator() < problemSet.get(i).getDenominator()) {
-                    problemSet.remove(i);
-                } else { i++; }
-            }
-        }
-
-        if (lessonFunction == BasicMath.DIV) {
-            for (int i=0; i<problemSet.size(); ) {
-                if ( (problemSet.get(i).getNumerator() < problemSet.get(i).getDenominator()) ||
-                    ((problemSet.get(i).getNumerator()%problemSet.get(i).getDenominator()) != 0) ) {
-                    problemSet.remove(i);
-                } else { i++; }
-            }
-       }
-       System.out.println(("Problem Set Size: " + problemSet.size()));
+        System.out.println(("Problem Set Size: " + problemSet.size()));
     }
 }
