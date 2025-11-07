@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.fabo.mathlesson.R;
+import com.github.mikephil.charting.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Thread.sleep(3000L);
+        Utils.init(this);
         setContentView(R.layout.activity_main);
     }
 }

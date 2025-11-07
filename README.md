@@ -36,7 +36,7 @@ Math Lesson has Unit tests that validate the domain functionality.  Integration 
 ## Documentation
 
 Math Lesson documentation is maintained in this document and can be generated from Android Studio using the generate javadoc tool.
-The javadoc files are [here](///./app/doc/javadoc/index.html)
+The javadoc files are [here](app/doc/javadoc)
 
 The Project Structure requires updated to include the local copy of 'android.jar'. To accomplish this, first locate your locate copy of android.jar, usually /home/,user./Android/Sdk/platforms/,version./android.jar.
 Select File>Project Structure>dependencies>All Modules. The screen below will pop up.
