@@ -132,23 +132,19 @@ title: Lesson Architecture
 ---
 
 architecture-beta
-    group api(cloud)[Math Lesson API]
-
+    group api(cloud)[Fraction Lesson API]
+    
     service droid(server)[Android] in api
-    service sm(server)[Math Lesson] in api
     service config(server)[Configuration Services] in api
     service build(server)[Generate Problems] in api
     service run(server)[Lesson Processor] in api
     service res(server)[Results Processor] in api
     
-    sm:T <--> B:config
-    config:R <--> L:droid
-    droid:L <--> R:config
-    sm:L <--> R:build
-    sm:R <--> L:run
-    run:T <--> B:droid
-    droid:B <--> T:run
-    sm:B <--> T:res
+    config:R --> L:run
+    run:R <--> L:build
+    run:B --> T:res
+    res:B --> T:droid
+    res:L --> B:config
 ```
 
 
