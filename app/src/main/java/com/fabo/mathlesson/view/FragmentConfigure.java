@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class FragmentConfigure extends Fragment {
     int numProblems = 10;
     boolean rangeClicked = false;
     boolean randomClicked = false;
+    boolean forceRandom = false;
+
     Button range_button;
     Button random_button;
     Button[] function_buttons;
@@ -71,9 +74,9 @@ public class FragmentConfigure extends Fragment {
         random_button = fragmentConfigureBinding.randomButton;
         range_button = fragmentConfigureBinding.rangeButton;
 
-        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
+        // fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
+        // fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
+        // fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         String color_switch_off = "#B5AEAF";
         String color_switch_on  = "#B3FA97";
@@ -87,7 +90,6 @@ public class FragmentConfigure extends Fragment {
 
         fragmentConfigureBinding.functionButton1.setOnClickListener(v -> {
             function_buttons[function].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
-
             function = 1;
             function_buttons[function].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
         });
@@ -108,33 +110,40 @@ public class FragmentConfigure extends Fragment {
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
             level = 0;
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+            forceRandom = false;
         });
 
         fragmentConfigureBinding.digitButton1.setOnClickListener(v -> {
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
             level = 1;
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+            forceRandom = false;
         });
 
         fragmentConfigureBinding.digitButton2.setOnClickListener(v -> {
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
             level = 2;
             level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+            forceRandom = true;
+            random_button.setText(R.string.Random);
+            random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+            randomClicked = true;
+            random = 1;
         });
 
         fragmentConfigureBinding.randomButton.setOnClickListener(v -> {
-            if (randomClicked) {
-                random = 0;
-                random_button.setText(R.string.Ordered);
-                random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
-                randomClicked = false;
-            } else {
-                random = 1;
-                random_button.setText(R.string.Random);
-                random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
-                randomClicked = true;
-
-
+            if (!forceRandom) {
+                if (randomClicked) {
+                    random = 0;
+                    random_button.setText(R.string.Ordered);
+                    random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+                    randomClicked = false;
+                } else {
+                    random = 1;
+                    random_button.setText(R.string.Random);
+                    random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
+                    randomClicked = true;
+                }
             }
         });
 
@@ -164,9 +173,21 @@ public class FragmentConfigure extends Fragment {
 
         fragmentConfigureBinding.doneButton.setOnClickListener(v -> {
 
-            start = Integer.parseInt(fragmentConfigureBinding.startEditTextNumberDecimal.getText().toString());
-            end = Integer.parseInt(fragmentConfigureBinding.endEditTextNumberDecimal.getText().toString());
-            numProblems = Integer.parseInt(fragmentConfigureBinding.numEditTextNumberDecimal.getText().toString());
+            Editable edit = fragmentConfigureBinding.startEditTextNumberDecimal.getText();
+            if (edit != null) System.out.println("input: " + edit.toString());
+            String input = fragmentConfigureBinding.startEditTextNumberDecimal.getText().toString();
+            start = (input != null && !input.isEmpty()) ? Integer.parseInt(input) : 0;
+
+            double base = 10;
+            double exponent = level+1;
+
+            int result = (int)Math.pow(base, exponent);
+
+            input = fragmentConfigureBinding.endEditTextNumberDecimal.getText().toString();
+            end = (input != null && !input.isEmpty()) ? Integer.parseInt(input) : result;
+
+            input = fragmentConfigureBinding.numEditTextNumberDecimal.getText().toString();
+            numProblems = (input != null && !input.isEmpty()) ? Integer.parseInt(input) : 10;
 
             Bundle bundle = new Bundle();
             bundle.putInt("function",function);
@@ -176,7 +197,6 @@ public class FragmentConfigure extends Fragment {
             bundle.putInt("start",start);
             bundle.putInt("end",end);
             bundle.putInt("num",numProblems);
-
 
             Navigation.findNavController(v).navigate(
                     R.id.action_fragmentConfigure_to_fragmentLesson,
@@ -195,9 +215,9 @@ public class FragmentConfigure extends Fragment {
         end = 10;
         numProblems = 10;
 
-        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
+        // fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
+        // fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
+        // fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         return fragmentConfigureBinding.getRoot();
 

@@ -7,6 +7,21 @@
     android:background="@color/background_color"
     tools:context=".view.FragmentConfigure">
 
+    <TextView
+        android:id="@+id/topView"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="5dp"
+        android:minHeight="35dp"
+        android:gravity="bottom"
+        android:text=" "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
     <LinearLayout
         android:id="@+id/linearLayoutTop"
         android:layout_width="600dp"
@@ -16,12 +31,12 @@
         android:gravity="start"
         android:orientation="horizontal"
         android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
-    <TextView
+        <TextView
             android:id="@+id/functionView"
             android:layout_width="200dp"
             android:layout_height="50dp"
@@ -31,49 +46,43 @@
             android:text="@string/Function"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/functionButton0"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/switch_on"
+            android:text="@string/Add"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/functionButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/switch_off"
             android:textColor="@color/black"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/linearLayoutTop"
-            app:layout_constraintVertical_bias="0.5"/>
+            android:text="@string/Sub"/>
 
+        <Button
+            android:id="@+id/functionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/switch_off"
+            android:textColor="@color/black"
+            android:text="@string/Mul"/>
 
-            <Button
-                android:id="@+id/functionButton0"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="5dp"
-                android:backgroundTint="@color/switch_on"
-                android:text="@string/Add"
-                android:textColor="@color/black" />
-
-
-            <Button
-                android:id="@+id/functionButton1"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/switch_off"
-                android:textColor="@color/black"
-                android:text="@string/Sub"/>
-
-            <Button
-                android:id="@+id/functionButton2"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/switch_off"
-                android:textColor="@color/black"
-                android:text="@string/Mul"/>
-
-            <Button
-                android:id="@+id/functionButton3"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="1dp"
-                android:backgroundTint="@color/switch_off"
-                android:textColor="@color/black"
-                android:text="@string/Div"/>
+        <Button
+            android:id="@+id/functionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:backgroundTint="@color/switch_off"
+            android:textColor="@color/black"
+            android:text="@string/Div"/>
     </LinearLayout>
 
     <LinearLayout
@@ -99,9 +108,7 @@
             android:text="@string/Level"
             android:layout_marginBottom="900dp"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayoutDigits" />
+            android:textStyle="bold"/>
 
 
             <Button
@@ -112,7 +119,7 @@
                 android:layout_marginStart="5dp"
                 android:backgroundTint="@color/switch_on"
                 android:textColor="@color/black"
-                android:text="10"
+                android:text="@string/level_0"
                 app:layout_constraintTop_toBottomOf="@+id/digitView" />
 
 
@@ -121,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
-                android:text="100"
+                android:text="@string/level_1"
                 android:backgroundTint="@color/switch_off"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/digitView" />
@@ -131,7 +138,7 @@
                 android:id="@+id/digitButton2"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="1000"
+                android:text="@string/level_2"
                 android:backgroundTint="@color/switch_off"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/digitView" />
@@ -159,10 +166,9 @@
             android:layout_height="45dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="8dp"
-            android:backgroundTint="@color/switch_off"
+            android:backgroundTint="@color/switch_on"
             android:textColor="@color/black"
-            android:text="@string/Ordered"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:text="@string/Ordered" />
 
         <Button
             android:id="@+id/rangeButton"
@@ -172,8 +178,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/switch_off"
             android:textColor="@color/black"
-            android:text="@string/Range"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:text="@string/Range" />
 
         <TextView
             android:id="@+id/startTextView"
@@ -185,8 +190,7 @@
             android:text="@string/Start"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:visibility="invisible"/>
 
         <EditText
             android:id="@+id/startEditTextNumberDecimal"
@@ -194,9 +198,9 @@
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:autofillHints=""
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:hint="@string/Start_Range"
+            android:autofillHints="@string/Start_Range"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/endTextView"
@@ -208,8 +212,7 @@
             android:text="@string/End"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:visibility="invisible"/>
 
         <EditText
             android:id="@+id/endEditTextNumberDecimal"
@@ -217,10 +220,10 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:ems="10"
-            android:autofillHints="End Range"
+            android:hint="@string/End_Range"
+            android:autofillHints="@string/End_Range"
             android:visibility="invisible"
-            android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDigits" />
+            android:inputType="numberDecimal"/>
 
     </LinearLayout>
 
@@ -244,16 +247,16 @@
             android:minHeight="35dp"
             android:text="@string/Number"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRandR" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/numEditTextNumberDecimal"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
+            android:hint="@string/Num_Problems"
+            android:autofillHints="@string/Start_Range"
             android:ems="10"
-            android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRandR" />
+            android:inputType="numberDecimal"/>
 
     </LinearLayout>
 

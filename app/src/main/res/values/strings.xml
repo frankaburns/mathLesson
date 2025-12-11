@@ -31,6 +31,11 @@
     <string name="Ordered">Ordered</string>
     <string name="Range">Range</string>
 
+    <string name="Start_Range">Start Range</string>
+    <string name="End_Range">End Range</string>
+
+    <string name="Num_Problems">Number of Problems</string>
+
     <string name="Start">Start:</string>
     <string name="End">End:</string>
 

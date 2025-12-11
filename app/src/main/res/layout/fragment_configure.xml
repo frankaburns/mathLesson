@@ -11,8 +11,8 @@
     <TextView
         android:id="@+id/functionView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
         android:minHeight="35dp"
         android:gravity="bottom"
         android:text="@string/Function"
@@ -29,7 +29,7 @@
         android:id="@+id/linearLayoutFunction"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="bottom"
         android:orientation="horizontal"
@@ -88,7 +88,7 @@
         android:id="@+id/digitView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="16dp"
         android:minHeight="35dp"
         android:text="@string/Level"
         android:layout_marginBottom="900dp"
@@ -103,7 +103,7 @@
         android:id="@+id/linearLayoutDigit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="bottom"
         android:orientation="horizontal"
@@ -121,7 +121,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/switch_on"
             android:textColor="@color/black"
-            android:text="10"
+            android:text="@string/level_0"
             app:layout_constraintTop_toBottomOf="@+id/digitView" />
 
 
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
-            android:text="100"
+            android:text="@string/level_1"
             android:backgroundTint="@color/switch_off"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/digitView" />
@@ -140,7 +140,7 @@
             android:id="@+id/digitButton2"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="1000"
+            android:text="@string/level_2"
             android:backgroundTint="@color/switch_off"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/digitView" />
@@ -179,7 +179,7 @@
             android:layout_height="45dp"
             android:layout_marginEnd="100dp"
             android:layout_marginStart="8dp"
-            android:backgroundTint="@color/switch_off"
+            android:backgroundTint="@color/switch_on"
             android:textColor="@color/black"
             android:text="@string/Ordered"
             app:layout_constraintTop_toBottomOf="@+id/functionView" />
@@ -246,7 +246,8 @@
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:autofillHints=""
+            android:hint="@string/Start_Range"
+            android:autofillHints="@string/Start_Range"
             android:visibility="invisible"
             tools:layout_editor_absoluteX="168dp"
             tools:layout_editor_absoluteY="425dp"/>
@@ -288,7 +289,8 @@
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:ems="10"
-            android:autofillHints=""
+            android:hint="@string/End_Range"
+            android:autofillHints="@string/End_Range"
             android:visibility="invisible"
             android:inputType="numberDecimal"/>
 
@@ -328,6 +330,8 @@
             android:layout_height="100dp"
             android:gravity="bottom"
             android:ems="10"
+            android:hint="@string/Num_Problems"
+            android:autofillHints="@string/Num_Problems"
             android:inputType="numberDecimal"/>
 
     </LinearLayout>
