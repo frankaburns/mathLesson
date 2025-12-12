@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
@@ -31,8 +32,6 @@ public class FragmentConfigure extends Fragment {
     int range = 0;
     int start = 0;
     int end = 10;
-    int switch_on = 0;
-    int switch_off = 0;
     int numProblems = 10;
     boolean rangeClicked = false;
     boolean randomClicked = false;
@@ -63,7 +62,7 @@ public class FragmentConfigure extends Fragment {
      * @return - the newly created View
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         fragmentConfigureBinding = FragmentConfigureBinding.inflate(inflater,container,false);
@@ -174,7 +173,6 @@ public class FragmentConfigure extends Fragment {
         fragmentConfigureBinding.doneButton.setOnClickListener(v -> {
 
             Editable edit = fragmentConfigureBinding.startEditTextNumberDecimal.getText();
-            if (edit != null) System.out.println("input: " + edit.toString());
             String input = fragmentConfigureBinding.startEditTextNumberDecimal.getText().toString();
             start = (input != null && !input.isEmpty()) ? Integer.parseInt(input) : 0;
 
@@ -215,9 +213,9 @@ public class FragmentConfigure extends Fragment {
         end = 10;
         numProblems = 10;
 
-        // fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-        // fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-        // fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
+        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
+        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
+        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         return fragmentConfigureBinding.getRoot();
 

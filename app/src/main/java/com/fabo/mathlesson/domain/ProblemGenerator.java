@@ -25,6 +25,7 @@ class ProblemGenerator {
     private  static int     problemsSolved;
     private  static int     numProblems;
     private  static int     lessonFunction; // 0-ADD, 1-SUB, 2-MUL, 3-DIV
+    private  static boolean forceRandom;
     private  static boolean randomProblem;
 
     //
@@ -45,6 +46,7 @@ class ProblemGenerator {
         startCol       = 0;
         lessonLevel    = 0;
         numProblems    = 10;
+        forceRandom    = false;
         randomProblem  = false;
         problemsSolved = 0;
     }
@@ -61,8 +63,7 @@ class ProblemGenerator {
      * Set the ordered/random for problems for the lesson.
      * @param p - randomize the problem objects
      */
-    public void setRandomProblem ( boolean p) {
-      randomProblem = p;
+    public void setRandomProblem ( boolean p) { randomProblem = p;
     }
 
     /**
@@ -103,6 +104,7 @@ class ProblemGenerator {
         } else if (lessonLevel == 2) {
             endRow = 1000;
             endCol = 1000;
+            forceRandom = true;
         }
     }
 
@@ -186,21 +188,6 @@ class ProblemGenerator {
     }
 
     /**
-     * randomly move the problem objects around in the list
-     */
-    private void shuffleArray () {
-      Random random = new Random();
-      int newPosition;
-      int bound = problemSet.size();
-      for( int prob = 0; prob < problemSet.size(); prob++ ){
-          newPosition = random.nextInt(bound);
-          BasicMath tmp = problemSet.get(newPosition);
-          problemSet.set(newPosition, problemSet.get(prob));
-          problemSet.set(prob, tmp);
-        }
-    }
-
-    /**
      * Generate the requested problem set
      *    build full problem set (100, 10,000, 1,000,000)
      *    from 1 to size representing digits (0-10, 1-100, 2-1000)
@@ -216,35 +203,83 @@ class ProblemGenerator {
      *    and is divisible evenly by the denominator.
      */
     public void buildProblemSet () {
-        if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
-            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
-                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
-                    problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
-                }
-            }
+       if (forceRandom || randomProblem) {
 
+            int min = 1;
 
-        } else if (lessonFunction == BasicMath.SUB) {
-            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
-                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
-                   if (iPlusOne > jPlusOne) {
-                       problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
-                   }
+            int oper1     = 0;
+            int oper2     = 0;
+
+            int incMax    = endCol;
+            int increment = 0;
+
+            if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
+
+                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+
+                for (int i = 1; i<numProblems; i++) {
+                    oper1 = min + (int)(Math.random() * ((incMax - min) + 1));
+                    oper2 = min + (int)(Math.random() * ((incMax - min) + 1));
+                    problemSet.add(new BasicMath(lessonFunction, oper1, oper2));
+                    incMax += increment;
                 }
-            }
-        } else if (lessonFunction == BasicMath.DIV) {
-            for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow; i++, iPlusOne++) {
-                for (int j = startCol, jPlusOne = startCol + 1; j < endCol; j++, jPlusOne++) {
-                    if ( (iPlusOne > jPlusOne) && (iPlusOne%jPlusOne == 0) ) {
-                        problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+            } else if (lessonFunction == BasicMath.SUB) {
+
+                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+
+                while (problemSet.size() < numProblems) {
+                    oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
+                    oper2 = min + (int) (Math.random() * ((incMax - min) + 1));
+
+                    if (oper1 > oper2) {
+                        problemSet.add(new BasicMath(lessonFunction, oper1, oper2));
+                    } else {
+                        problemSet.add(new BasicMath(lessonFunction, oper2, oper1));
+                    }
+                    incMax += increment;
+                }
+            } else if (lessonFunction == BasicMath.DIV) {
+
+                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+
+                while (problemSet.size() < numProblems) {
+                    oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
+                    oper2 = min + (int) (Math.random() * ((incMax - min) + 1));
+
+                    if ( (oper1 > oper2) && (oper1%oper2 == 0) ) {
+                        problemSet.add(new BasicMath(lessonFunction, oper1, oper2));
+                        incMax += increment;
                     }
                 }
             }
-        }
+        } else {
+           if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
+               for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow && problemSet.size() <= numProblems; i++, iPlusOne++) {
+                   for (int j = startCol, jPlusOne = startCol + 1; j < endCol&& problemSet.size() <= numProblems; j++, jPlusOne++) {
+                       problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                   }
+               }
 
-        if (randomProblem) {
-            shuffleArray ();
-        }
+
+           } else if (lessonFunction == BasicMath.SUB) {
+               for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow&& problemSet.size() <= numProblems; i++, iPlusOne++) {
+                   for (int j = startCol, jPlusOne = startCol + 1; j < endCol&& problemSet.size() <= numProblems; j++, jPlusOne++) {
+                       if (iPlusOne > jPlusOne) {
+                           problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                       }
+                   }
+               }
+           } else if (lessonFunction == BasicMath.DIV) {
+               for (int i = startRow, iPlusOne = (startRow == 0) ? 1 : startRow; i < endRow&& problemSet.size() <= numProblems; i++, iPlusOne++) {
+                   for (int j = startCol, jPlusOne = startCol + 1; j < endCol&& problemSet.size() <= numProblems; j++, jPlusOne++) {
+                       if ((iPlusOne > jPlusOne) && (iPlusOne % jPlusOne == 0)) {
+                           problemSet.add(new BasicMath(lessonFunction, iPlusOne, jPlusOne));
+                       }
+                   }
+               }
+           }
+       }
+
 
         System.out.println(("Problem Set Size: " + problemSet.size()));
     }
