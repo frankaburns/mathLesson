@@ -1,7 +1,7 @@
 package com.fabo.mathlesson.domain;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * The ProblemGenerator class builds a List of BasicMath objects.  The generated list is defined by

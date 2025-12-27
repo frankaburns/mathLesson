@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +40,8 @@ public class FragmentConfigure extends Fragment {
     Button random_button;
     Button[] function_buttons;
     Button[] level_buttons;
+    String color_switch_off = "#B5AEAF";
+    String color_switch_on  = "#B3FA97";
 
     FragmentConfigureBinding fragmentConfigureBinding;
 
@@ -73,12 +74,34 @@ public class FragmentConfigure extends Fragment {
         random_button = fragmentConfigureBinding.randomButton;
         range_button = fragmentConfigureBinding.rangeButton;
 
-        // fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-        // fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-        // fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
+        if (savedInstanceState != null) {
+            if (getArguments() != null){
+                function = getArguments().getInt("function");            // Restore your data here
+                function_buttons[0].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
+                function_buttons[function].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
 
-        String color_switch_off = "#B5AEAF";
-        String color_switch_on  = "#B3FA97";
+                level = getArguments().getInt("level");
+                level_buttons[0].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
+                level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
+
+                random = getArguments().getInt("random");
+                random_button.setText((random == 0) ? R.string.Ordered : R.string.Random);
+                random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor((random == 0) ? color_switch_off : color_switch_on)));
+                
+                range = getArguments().getInt("range");
+                if (range == 1) {
+                    start = getArguments().getInt("start");
+                    end = getArguments().getInt("end");
+                } else {
+                    start = 0;
+                    end = (int) Math.pow(10, (level+1));
+                }
+                numProblems = getArguments().getInt("num");
+            }
+        }
+        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
+        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
+        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
 
         fragmentConfigureBinding.functionButton0.setOnClickListener(v -> {
 
@@ -172,7 +195,6 @@ public class FragmentConfigure extends Fragment {
 
         fragmentConfigureBinding.doneButton.setOnClickListener(v -> {
 
-            Editable edit = fragmentConfigureBinding.startEditTextNumberDecimal.getText();
             String input = fragmentConfigureBinding.startEditTextNumberDecimal.getText().toString();
             start = (input != null && !input.isEmpty()) ? Integer.parseInt(input) : 0;
 
@@ -196,6 +218,8 @@ public class FragmentConfigure extends Fragment {
             bundle.putInt("end",end);
             bundle.putInt("num",numProblems);
 
+            onSaveInstanceState(bundle);
+
             Navigation.findNavController(v).navigate(
                     R.id.action_fragmentConfigure_to_fragmentLesson,
                     bundle,
@@ -203,21 +227,13 @@ public class FragmentConfigure extends Fragment {
             );
         });
 
-        // reset parameters.
-        //
-        function = 0;
-        level = 0;
-        random = 0;
-        range = 0;
-        start = 0;
-        end = 10;
-        numProblems = 10;
-
-        fragmentConfigureBinding.endEditTextNumberDecimal.setText(String.valueOf(end));
-        fragmentConfigureBinding.startEditTextNumberDecimal.setText(String.valueOf(start));
-        fragmentConfigureBinding.numEditTextNumberDecimal.setText(String.valueOf(numProblems));
-
         return fragmentConfigureBinding.getRoot();
 
+    }
+    // Inside your Fragment
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("key_data", "some data");
     }
 }
