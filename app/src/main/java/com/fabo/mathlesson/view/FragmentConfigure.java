@@ -76,26 +76,12 @@ public class FragmentConfigure extends Fragment {
 
         if (savedInstanceState != null) {
             if (getArguments() != null){
-                function = getArguments().getInt("function");            // Restore your data here
-                function_buttons[0].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
-                function_buttons[function].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_on)));
-
-                level = getArguments().getInt("level");
-                level_buttons[0].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
-                level_buttons[level].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color_switch_off)));
-
-                random = getArguments().getInt("random");
-                random_button.setText((random == 0) ? R.string.Ordered : R.string.Random);
-                random_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor((random == 0) ? color_switch_off : color_switch_on)));
-                
-                range = getArguments().getInt("range");
-                if (range == 1) {
-                    start = getArguments().getInt("start");
-                    end = getArguments().getInt("end");
-                } else {
-                    start = 0;
-                    end = (int) Math.pow(10, (level+1));
-                }
+                function = 0;
+                level = 0;
+                random = 0;
+                range = 0;
+                start = 0;
+                end = (int) Math.pow(10, (level+1));
                 numProblems = getArguments().getInt("num");
             }
         }

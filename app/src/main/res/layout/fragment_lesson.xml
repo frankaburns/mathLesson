@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="bottom"
             android:text="@string/correct_text"
             android:textColor="@color/black"
             android:layout_marginStart="80dp"
@@ -81,7 +82,7 @@
     <TextView
         android:id="@+id/textViewNumerator"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="80dp"
         android:autoSizeMaxTextSize="70sp"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeStepGranularity="2sp"
@@ -97,7 +98,7 @@
     <TextView
         android:id="@+id/textViewDenominator"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="80dp"
         android:autoSizeMaxTextSize="70sp"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeStepGranularity="2sp"
@@ -112,7 +113,7 @@
     <TextView
         android:id="@+id/textViewComment"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="80dp"
         android:autoSizeMaxTextSize="70sp"
         android:autoSizeMinTextSize="8sp"
         android:autoSizeStepGranularity="2sp"
@@ -127,7 +128,7 @@
     <TextView
         android:id="@+id/textViewResult"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="80dp"
         android:autoSizeMaxTextSize="70sp"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeStepGranularity="2sp"
@@ -143,6 +144,7 @@
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:columnCount="3"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"

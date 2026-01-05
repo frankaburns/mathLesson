@@ -215,7 +215,7 @@ class ProblemGenerator {
 
             if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
 
-                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
 
                 for (int i = 1; i<numProblems; i++) {
                     oper1 = min + (int)(Math.random() * ((incMax - min) + 1));
@@ -225,7 +225,7 @@ class ProblemGenerator {
                 }
             } else if (lessonFunction == BasicMath.SUB) {
 
-                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
 
                 while (problemSet.size() < numProblems) {
                     oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
@@ -240,7 +240,7 @@ class ProblemGenerator {
                 }
             } else if (lessonFunction == BasicMath.DIV) {
 
-                if (endCol == 1000) { incMax = increment = endCol/numProblems; }
+                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
 
                 while (problemSet.size() < numProblems) {
                     oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
