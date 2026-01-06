@@ -54,10 +54,10 @@ public class FragmentResult extends Fragment {
 
         //int correct = FragmentResultArgs.fromBundle(getArguments()).getCorrect();
         if (getArguments() != null){
-            correctNumber = (float) getArguments().getInt("correct");
+            avgTime = (float) getArguments().getInt("averageTime");
             wrongNumber = (float) getArguments().getInt("wrong");
             totalNumber = (float) getArguments().getInt("total");
-            avgTime = (float) getArguments().getInt("averageTime");
+            correctNumber = (float) getArguments().getInt("correct");
         }
 
         List<Float> data = Arrays.asList(correctNumber, wrongNumber, totalNumber, avgTime);
