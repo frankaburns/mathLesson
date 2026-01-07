@@ -3,7 +3,19 @@ package com.fabo.mathlesson.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
+ * ProblemGenerator.java     1.82 01/03/2026
+ *
+ * Copyright (c) 2025-2026 Francis A Burns.
+ * 1140 E Marlin Dr. Chandler, Arizona 85286, U.S.A.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Francis A Burns. ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Francis.
+ *
  * The ProblemGenerator class builds a List of BasicMath objects.  The generated list is defined by
  * several variables.<br>>
  * Note: Subtraction and Division are filtered to maintain whole digit solutions, so the problem set

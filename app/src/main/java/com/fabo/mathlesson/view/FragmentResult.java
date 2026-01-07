@@ -1,23 +1,29 @@
+/*
+ * FragmentResult.java     1.82 01/03/2026
+ *
+ * Copyright (c) 2025-2026 Francis A Burns.
+ * 1140 E Marlin Dr. Chandler, Arizona 85286, U.S.A.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Francis A Burns. ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Francis.
+ *
+ */
 package com.fabo.mathlesson.view;
 
-import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.fabo.mathlesson.R;
-
 import com.fabo.mathlesson.databinding.FragmentResultBinding;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
