@@ -217,27 +217,28 @@ class ProblemGenerator {
     public void buildProblemSet () {
        if (forceRandom || randomProblem) {
 
-            int min = 1;
+            int min = startRow;
 
             int oper1     = 0;
             int oper2     = 0;
 
-            int incMax    = endCol;
+            int incMax    = endRow;
             int increment = 0;
 
             if (lessonFunction == BasicMath.ADD || lessonFunction == BasicMath.MUL) {
 
-                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
-
+                if (endRow == 1000 || endRow == 100) { incMax = increment = (endRow-startRow)/numProblems; }
+                if (incMax == 0) { incMax = endRow; }
                 for (int i = 1; i<numProblems; i++) {
                     oper1 = min + (int)(Math.random() * ((incMax - min) + 1));
                     oper2 = min + (int)(Math.random() * ((incMax - min) + 1));
                     problemSet.add(new BasicMath(lessonFunction, oper1, oper2));
-                    incMax += increment;
+                    if (incMax != endRow) { incMax += increment; }
                 }
             } else if (lessonFunction == BasicMath.SUB) {
 
-                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
+                if (endRow == 1000 || endRow == 100) { incMax = increment = (endRow-startRow)/numProblems; }
+                if (incMax == 0) { incMax = endRow; }
 
                 while (problemSet.size() < numProblems) {
                     oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
@@ -248,11 +249,12 @@ class ProblemGenerator {
                     } else {
                         problemSet.add(new BasicMath(lessonFunction, oper2, oper1));
                     }
-                    incMax += increment;
+                    if (incMax != endRow) { incMax += increment; }
                 }
             } else if (lessonFunction == BasicMath.DIV) {
 
-                if (endCol == 1000 || endCol == 100) { incMax = increment = endCol/numProblems; }
+                if (endRow == 1000 || endRow == 100) { incMax = increment = (endRow-startRow)/numProblems; }
+                if (incMax == 0) { incMax = endRow; }
 
                 while (problemSet.size() < numProblems) {
                     oper1 = min + (int) (Math.random() * ((incMax - min) + 1));
@@ -260,7 +262,7 @@ class ProblemGenerator {
 
                     if ( (oper1 > oper2) && (oper1%oper2 == 0) ) {
                         problemSet.add(new BasicMath(lessonFunction, oper1, oper2));
-                        incMax += increment;
+                        if (incMax != endRow) { incMax += increment; }
                     }
                 }
             }

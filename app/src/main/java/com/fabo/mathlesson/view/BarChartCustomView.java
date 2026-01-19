@@ -11,7 +11,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Francis.
  */
-package com.fabo.mathlesson.view; // Replace with your package name
+package com.fabo.mathlesson.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
